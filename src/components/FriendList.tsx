@@ -7,6 +7,7 @@ interface Props {
   data: {
     id: number;
     name: string;
+    online: string;
     likes: number;
   }[];
   handleFollow: () => void;

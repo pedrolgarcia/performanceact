@@ -12,6 +12,12 @@ import { FriendList } from "../components/FriendList";
 
 import { theme } from "../styles/theme";
 
+interface Data {
+  id: string;
+  name: string;
+  likes: number;
+}
+
 export function Home() {
   const [name, setName] = useState("");
   const [friends, setFriends] = useState([]);
@@ -20,7 +26,16 @@ export function Home() {
     const response = await fetch(`http://192.168.0.121:3333/friends?q=${name}`);
     const data = await response.json();
 
-    setFriends(data);
+    const formattedData = data.map((item: Data) => {
+      return {
+        id: item.id,
+        name: item.name,
+        likes: item.likes,
+        online: `${new Date().getHours()}:${new Date().getMinutes()}`
+      };
+    });
+
+    setFriends(formattedData);
   }
 
   const handleFollow = useCallback(() => {
