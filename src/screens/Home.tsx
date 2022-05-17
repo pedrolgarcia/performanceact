@@ -1,12 +1,5 @@
 import React, { useCallback, useState } from "react";
-import {
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  Button,
-  StyleSheet
-} from "react-native";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
 import { FriendList } from "../components/FriendList";
 
@@ -56,9 +49,7 @@ export function Home() {
         color={theme.colors.primary}
       />
 
-      <ScrollView style={styles.list}>
-        <FriendList data={friends} handleFollow={handleFollow} />
-      </ScrollView>
+      <FriendList data={friends} handleFollow={handleFollow} />
     </View>
   );
 }
