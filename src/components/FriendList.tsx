@@ -9,9 +9,10 @@ interface Props {
     name: string;
     likes: number;
   }[];
+  handleFollow: () => void;
 }
 
-export function FriendList({ data }: Props) {
+export function FriendList({ data, handleFollow }: Props) {
   const totalLikes = useMemo(() => {
     return data.reduce((likes, friend) => likes + friend.likes, 0);
   }, [data]);
@@ -21,7 +22,7 @@ export function FriendList({ data }: Props) {
       <Text>Total de likes: {totalLikes}</Text>
 
       {data.map((friend) => (
-        <Friend key={friend.id} data={friend} />
+        <Friend key={friend.id} data={friend} handleFollow={handleFollow} />
       ))}
     </View>
   );

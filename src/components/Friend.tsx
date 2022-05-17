@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 interface Props {
   data: {
@@ -7,13 +7,19 @@ interface Props {
     name: string;
     likes: number;
   };
+  handleFollow: () => void;
 }
 
-function FriendComponent({ data }: Props) {
+function FriendComponent({ data, handleFollow }: Props) {
   return (
-    <Text>
-      {data.name} - Likes: {data.likes}
-    </Text>
+    <View style={{ marginBottom: 10 }}>
+      <Text>
+        {data.name} - Likes: {data.likes}
+      </Text>
+      <TouchableOpacity onPress={handleFollow}>
+        <Text>Deixar de seguir</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
